@@ -29,6 +29,7 @@ class BaseTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.updateConstraints()
         self.verticalConstraintsHeight = verticalConstraints.height
     }
 

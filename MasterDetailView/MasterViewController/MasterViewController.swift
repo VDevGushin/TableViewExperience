@@ -10,8 +10,8 @@ import UIKit
 
 class MasterViewController: UITableViewController {
     //Можно было бы создать отдельный класс UIview - и в нем описать все элементы
-    var myRefreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
+    var myRefreshControl: MyUIRefreshControl = {
+        let refreshControl = MyUIRefreshControl()
         return refreshControl
     }()
 
@@ -103,7 +103,6 @@ class MasterViewController: UITableViewController {
         return self.tableManager.getCellHeight(indexPath: indexPath)
     }
 
-
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -115,13 +114,12 @@ class MasterViewController: UITableViewController {
 }
 
 extension MasterViewController: MasterViewDataControllerDelegate {
+
     func masterViewDataController(_ dataController: MasterViewDataController, new data: [BaseCellModel]) {
-        self.tableManager.addNew(source: data) { [weak self] isClean, newIndexPaths in
+        self.tableManager.loadNewBatch(source: data) { [weak self] isClean, newIndexPaths in
             guard let self = self else { return }
             if isClean {
-                if self.myRefreshControl.isRefreshing {
-                    self.myRefreshControl.endRefreshing()
-                }
+                self.myRefreshControl.stopLoading()
                 self.tableView.reloadData()
             } else {
                 self.tableView.beginUpdates()
@@ -129,6 +127,14 @@ extension MasterViewController: MasterViewDataControllerDelegate {
                 self.tableView.endUpdates()
             }
             self.infoButton.title = "\(self.tableManager.dataSourceCount)"
+        }
+    }
+}
+
+final class MyUIRefreshControl: UIRefreshControl {
+    func stopLoading() {
+        if self.isRefreshing {
+            self.endRefreshing()
         }
     }
 }

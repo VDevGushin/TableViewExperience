@@ -60,11 +60,6 @@ final class MoveTableViewCell: BaseTableViewCell {
             height += toPlaceLabelText.height(withConstrainedWidth: toPlaceLabel.frame.width, font: toPlaceLabel.font)
         }
 
-        if let estimateTimeLabel = self.estimateTimeLabel
-            , let estimateTimeLabelText = estimateTimeLabel.text {
-            height += estimateTimeLabelText.height(withConstrainedWidth: estimateTimeLabel.frame.width, font: estimateTimeLabel.font)
-        }
-
         return height
     }
 }

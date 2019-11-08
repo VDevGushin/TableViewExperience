@@ -20,7 +20,6 @@ final class NoticeTableViewCell: BaseTableViewCell {
     }
 
     override var height: CGFloat {
-
         var height: CGFloat = super.verticalConstraintsHeight
 
         if let flightLabel = self.flightDateLabel

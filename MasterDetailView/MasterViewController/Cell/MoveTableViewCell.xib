@@ -26,19 +26,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEl-qH-eYd">
-                        <rect key="frame" x="16" y="37" width="332" height="20.5"/>
+                        <rect key="frame" x="16" y="37" width="332" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNO-c9-mIC">
-                        <rect key="frame" x="16" y="94" width="332" height="20"/>
+                        <rect key="frame" x="16" y="99" width="332" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="fuj-6X-8ex"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUa-EB-LTa">
-                        <rect key="frame" x="16" y="65.5" width="332" height="20.5"/>
+                        <rect key="frame" x="16" y="71" width="332" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -54,7 +57,7 @@
                     <constraint firstItem="mEl-qH-eYd" firstAttribute="top" secondItem="2Nb-h1-Krm" secondAttribute="bottom" constant="8" id="dfY-aq-2lJ"/>
                     <constraint firstAttribute="trailing" secondItem="2Nb-h1-Krm" secondAttribute="trailing" constant="16" id="dmD-04-d0u"/>
                     <constraint firstItem="QNO-c9-mIC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="gkf-0X-7UE"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QNO-c9-mIC" secondAttribute="bottom" priority="250" constant="8" id="kQW-CN-yxg"/>
+                    <constraint firstAttribute="bottom" secondItem="QNO-c9-mIC" secondAttribute="bottom" constant="8" id="kQW-CN-yxg"/>
                     <constraint firstItem="2Nb-h1-Krm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="qKs-Ge-zX4"/>
                     <constraint firstItem="nUa-EB-LTa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="r8n-fU-I2w"/>
                     <constraint firstItem="2Nb-h1-Krm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="yB8-Tt-mRW"/>
@@ -72,6 +75,7 @@
                 <outletCollection property="verticalConstraints" destination="6WO-qa-Mtg" collectionClass="NSMutableArray" id="CP3-QI-NCa"/>
                 <outletCollection property="verticalConstraints" destination="cFx-lf-qec" collectionClass="NSMutableArray" id="2Sa-sj-kVe"/>
                 <outletCollection property="verticalConstraints" destination="kQW-CN-yxg" collectionClass="NSMutableArray" id="XG6-0Q-fSK"/>
+                <outletCollection property="verticalConstraints" destination="fuj-6X-8ex" collectionClass="NSMutableArray" id="Ya3-Y6-Tpq"/>
             </connections>
             <point key="canvasLocation" x="100.00000000000001" y="96.09375"/>
         </tableViewCell>

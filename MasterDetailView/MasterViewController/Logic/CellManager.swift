@@ -56,4 +56,4 @@ class CellManager {
     }
 }
 
-extension CellManager: BaseTableViewCellDelegate {}
+extension CellManager: BaseTableViewCellDelegate { }

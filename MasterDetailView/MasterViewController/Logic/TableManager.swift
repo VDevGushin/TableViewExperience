@@ -25,7 +25,7 @@ final class TableManager {
         self.cellManager.clear()
     }
 
-    func addNew(source: [BaseCellModel],
+    func loadNewBatch(source: [BaseCellModel],
         on queue: DispatchQueue = .global(qos: .utility),
         completion: @escaping (Bool, [IndexPath]) -> Void) {
 
