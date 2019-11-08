@@ -119,8 +119,10 @@ extension MasterViewController: MasterViewDataControllerDelegate {
         self.tableManager.loadNewBatch(source: data) { [weak self] isClean, newIndexPaths in
             guard let self = self else { return }
             if isClean {
-                self.myRefreshControl.stopLoading()
                 self.tableView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .microseconds(300)) {
+                    self.myRefreshControl.stopLoading()
+                }
             } else {
                 self.tableView.beginUpdates()
                 self.tableView.insertRows(at: newIndexPaths, with: .automatic)
