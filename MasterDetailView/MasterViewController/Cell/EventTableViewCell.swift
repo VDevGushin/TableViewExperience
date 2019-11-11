@@ -16,27 +16,31 @@ final class EventTableViewCell: BaseTableViewCell {
     override func setup(with model: BaseCellModel) {
         guard let model = model as? Event else { return }
         self.nameLabel.text = "Название: " + (model.name ?? "_")
-        self.startTimeLabel.text = "Начало: " + (model.startTime?.strValue ?? "_")
-        self.endTimeLabel.text = "Конец: " + (model.endTime?.strValue ?? "_")
+        self.startTimeLabel.text = "Начало: " + (model.startTimeStr ?? "_")
+        self.endTimeLabel.text = "Конец: " + (model.endTimeStr ?? "_")
     }
 
+    override func calculateHeight() -> CGFloat {
+        guard self.height == nil else {
+            return self.height!
+        }
 
-    override var height: CGFloat {
-        var height: CGFloat = super.verticalConstraintsHeight
+        var calculateHeight = super.verticalConstraintsHeight
 
         if let nameLabel = self.nameLabel
             , let nameLabelText = nameLabel.text {
-            height += nameLabelText.height(withConstrainedWidth: nameLabel.frame.width, font: nameLabel.font)
+            calculateHeight += nameLabelText.height(withConstrainedWidth: nameLabel.frame.width, font: nameLabel.font)
         }
 
         if let startTimeLabel = self.startTimeLabel, let startTimeLabelText = startTimeLabel.text {
-            height += startTimeLabelText.height(withConstrainedWidth: startTimeLabel.frame.width, font: startTimeLabel.font)
+            calculateHeight += startTimeLabelText.height(withConstrainedWidth: startTimeLabel.frame.width, font: startTimeLabel.font)
         }
 
         if let endTimeLabel = self.endTimeLabel, let endTimeLabelText = endTimeLabel.text {
-            height += endTimeLabelText.height(withConstrainedWidth: endTimeLabel.frame.width, font: endTimeLabel.font)
+            calculateHeight += endTimeLabelText.height(withConstrainedWidth: endTimeLabel.frame.width, font: endTimeLabel.font)
         }
 
-        return height
+        self.height = calculateHeight
+        return calculateHeight
     }
 }

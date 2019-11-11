@@ -15,24 +15,30 @@ final class NoticeTableViewCell: BaseTableViewCell {
     override func setup(with model: BaseCellModel) {
         guard let model = model as? Notice else { return }
 
-        self.flightDateLabel.text = "Время вылета: " + (model.flightDate?.strValue ?? "_")
+        self.flightDateLabel.text = "Время вылета: " + (model.dateStrValue ?? "_")
         self.gateLabel.text = "Ворота: " + (model.gate ?? "_")
     }
 
-    override var height: CGFloat {
-        var height: CGFloat = super.verticalConstraintsHeight
+
+    override func calculateHeight() -> CGFloat {
+        guard self.height == nil else {
+            return self.height!
+        }
+
+        var calculateHeight = super.verticalConstraintsHeight
 
         if let flightLabel = self.flightDateLabel
             , let flightLabelText = flightLabel.text {
-            height += flightLabelText.height(withConstrainedWidth: flightLabel.frame.width, font: flightLabel.font)
+            calculateHeight += flightLabelText.height(withConstrainedWidth: flightLabel.frame.width, font: flightLabel.font)
         }
 
 
         if let gateLabel = self.gateLabel, let gateLabelText = gateLabel.text {
-            height += gateLabelText.height(withConstrainedWidth: gateLabel.frame.width, font: gateLabel.font)
+            calculateHeight += gateLabelText.height(withConstrainedWidth: gateLabel.frame.width, font: gateLabel.font)
         }
 
-        return height
+        self.height = calculateHeight
+        return calculateHeight
     }
 }
 

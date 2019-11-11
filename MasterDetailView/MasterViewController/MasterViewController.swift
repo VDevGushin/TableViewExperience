@@ -90,6 +90,10 @@ class MasterViewController: UITableViewController {
         return self.tableManager.getCell(model: self.tableManager[indexPath.row], indexPath: indexPath)
     }
 
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        self.tableManager.setup(cell: cell, model: self.tableManager[indexPath.row], indexPath: indexPath)
+//    }
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true

@@ -13,10 +13,15 @@ struct Event: BaseCellModel {
     var startTime: Date?
     var endTime: Date?
 
+    var startTimeStr: String?
+    var endTimeStr: String?
+
     //for test generators
     init(name: String?, startTime: Date?, endTime: Date?) {
         self.name = name
         self.startTime = startTime
         self.endTime = endTime
+        self.startTimeStr = self.startTime?.strValue
+        self.endTimeStr = self.endTime?.strValue
     }
 }

@@ -11,4 +11,12 @@ import UIKit
 struct Notice: BaseCellModel {
     var flightDate: Date?
     var gate: String?
+
+    var dateStrValue: String?
+
+    init(flightDate: Date?, gate: String?) {
+        self.flightDate = flightDate
+        self.gate = gate
+        self.dateStrValue = flightDate?.strValue
+    }
 }

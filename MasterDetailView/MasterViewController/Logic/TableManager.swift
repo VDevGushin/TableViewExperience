@@ -35,7 +35,7 @@ final class TableManager {
             let isContains = newIndexPaths.contains(where: { $0.row == 0 && $0.section == 0 })
 
             DispatchQueue.main.async {
-                self.cellManager.registerCells(tableView: self.tableView, with:  xibNames)
+                self.cellManager.registerCells(tableView: self.tableView, with: xibNames)
                 completion(isContains, newIndexPaths)
             }
         }
@@ -56,7 +56,7 @@ extension TableManager {
     func getCell(model: BaseCellModel, indexPath: IndexPath) -> UITableViewCell {
         return self.cellManager.getCell(tableView: self.tableView, model: model, indexPath: indexPath)
     }
-
+    
     func getCellHeight(indexPath: IndexPath) -> CGFloat {
         return self.cellManager.getCellHeight(indexPath: indexPath)
     }

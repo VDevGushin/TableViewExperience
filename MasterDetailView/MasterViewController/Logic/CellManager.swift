@@ -30,6 +30,7 @@ enum CellManagerXibType: String {
 class CellManager {
     typealias XibNames = Set<String>
     private var cellHeights: [Int: CGFloat] = [:]
+    private var dynamicHeight: [Int: () -> CGFloat] = [:]
 
     func clear() {
         self.cellHeights = [:]
@@ -46,13 +47,13 @@ class CellManager {
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! BaseTableViewCell
         cell.setup(with: model)
         cell.indexPath = indexPath
-        cell.delegate = self
-        self.cellHeights[indexPath.row] = cell.height
+        cell.delegate? = self
+        self.dynamicHeight[indexPath.row] = cell.calculateHeight
         return cell
     }
 
     func getCellHeight(indexPath: IndexPath) -> CGFloat {
-        self.cellHeights[indexPath.row] ?? 0.0
+        return self.dynamicHeight[indexPath.row]?() ?? 0.0
     }
 }
 
