@@ -19,12 +19,7 @@ final class NoticeTableViewCell: BaseTableViewCell {
         self.gateLabel.text = "Ворота: " + (model.gate ?? "_")
     }
 
-
-    override func calculateHeight() -> CGFloat {
-        guard self.height == nil else {
-            return self.height!
-        }
-
+    override var height: CGFloat {
         var calculateHeight = super.verticalConstraintsHeight
 
         if let flightLabel = self.flightDateLabel
@@ -37,7 +32,6 @@ final class NoticeTableViewCell: BaseTableViewCell {
             calculateHeight += gateLabelText.height(withConstrainedWidth: gateLabel.frame.width, font: gateLabel.font)
         }
 
-        self.height = calculateHeight
         return calculateHeight
     }
 }

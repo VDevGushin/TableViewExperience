@@ -20,11 +20,7 @@ final class EventTableViewCell: BaseTableViewCell {
         self.endTimeLabel.text = "Конец: " + (model.endTimeStr ?? "_")
     }
 
-    override func calculateHeight() -> CGFloat {
-        guard self.height == nil else {
-            return self.height!
-        }
-
+    override var height: CGFloat {
         var calculateHeight = super.verticalConstraintsHeight
 
         if let nameLabel = self.nameLabel
@@ -40,7 +36,6 @@ final class EventTableViewCell: BaseTableViewCell {
             calculateHeight += endTimeLabelText.height(withConstrainedWidth: endTimeLabel.frame.width, font: endTimeLabel.font)
         }
 
-        self.height = calculateHeight
         return calculateHeight
     }
 }

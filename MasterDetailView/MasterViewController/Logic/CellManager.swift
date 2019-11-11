@@ -29,7 +29,7 @@ enum CellManagerXibType: String {
 
 class CellManager {
     typealias XibNames = Set<String>
-    private var cellHeights: [Int: () -> CGFloat] = [:]
+    private var cellHeights: [Int: CGFloat] = [:]
 
     func clear() {
         self.cellHeights = [:]
@@ -47,12 +47,12 @@ class CellManager {
         cell.setup(with: model)
         cell.indexPath = indexPath
         cell.delegate? = self
-        self.cellHeights[indexPath.row] = cell.calculateHeight
+        self.cellHeights[indexPath.row] = cell.height
         return cell
     }
 
     func getCellHeight(indexPath: IndexPath) -> CGFloat {
-        return self.cellHeights[indexPath.row]?() ?? 0.0
+        return self.cellHeights[indexPath.row] ?? 0.0
     }
 }
 

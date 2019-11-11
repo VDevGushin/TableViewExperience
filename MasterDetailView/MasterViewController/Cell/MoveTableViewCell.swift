@@ -47,11 +47,8 @@ final class MoveTableViewCell: BaseTableViewCell {
         return String(format: "%0.2d:%0.2d:%0.2d.%0.3d", hours, minutes, seconds, ms)
     }
 
-    override func calculateHeight() -> CGFloat {
-        guard self.height == nil else {
-            return self.height!
-        }
 
+    override var height: CGFloat {
         var calculateHeight = super.verticalConstraintsHeight
 
         if let fromPlaceLabel = self.fromPlaceLabel
@@ -63,8 +60,6 @@ final class MoveTableViewCell: BaseTableViewCell {
             , let toPlaceLabelText = toPlaceLabel.text {
             calculateHeight += toPlaceLabelText.height(withConstrainedWidth: toPlaceLabel.frame.width, font: toPlaceLabel.font)
         }
-
-        self.height = calculateHeight
         return calculateHeight
     }
 }

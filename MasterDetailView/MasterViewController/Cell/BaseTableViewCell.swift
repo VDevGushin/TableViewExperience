@@ -16,8 +16,12 @@ class BaseTableViewCell: UITableViewCell {
     @IBOutlet var verticalConstraints: [NSLayoutConstraint]!
     weak var delegate: BaseTableViewCellDelegate?
     var indexPath: IndexPath?
-    var height: CGFloat?
+
     var verticalConstraintsHeight: CGFloat = 0.0
+
+    var height: CGFloat {
+        return 0.0
+    }
 
     func setup(with model: BaseCellModel) {
         fatalError("Need to override")
@@ -33,10 +37,6 @@ class BaseTableViewCell: UITableViewCell {
         super.prepareForReuse()
         guard let indexPath = self.indexPath else { return }
         self.delegate?.prepareForReuse?(with: indexPath)
-    }
-
-    func calculateHeight() -> CGFloat {
-        return 0.0
     }
 }
 
