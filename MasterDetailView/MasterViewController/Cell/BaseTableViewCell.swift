@@ -35,7 +35,6 @@ class BaseTableViewCell: UITableViewCell {
         self.delegate?.prepareForReuse?(with: indexPath)
     }
 
-    @discardableResult
     func calculateHeight() -> CGFloat {
         return 0.0
     }

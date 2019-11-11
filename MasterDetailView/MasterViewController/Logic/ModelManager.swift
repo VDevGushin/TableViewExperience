@@ -34,9 +34,6 @@ class ModelManager {
             indexPaths.append(IndexPath(row: startIndex, section: 0))
             startIndex += 1
         }
-
-        print(indexPaths.first?.row ?? 0.0)
-        print(indexPaths.last?.row ?? 0.0)
         return (indexPaths, xibNames)
     }
 }

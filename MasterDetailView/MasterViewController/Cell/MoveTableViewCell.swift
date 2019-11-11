@@ -53,7 +53,7 @@ final class MoveTableViewCell: BaseTableViewCell {
         }
 
         var calculateHeight = super.verticalConstraintsHeight
-        
+
         if let fromPlaceLabel = self.fromPlaceLabel
             , let fromPlaceLabelText = fromPlaceLabel.text {
             calculateHeight += fromPlaceLabelText.height(withConstrainedWidth: fromPlaceLabel.frame.width, font: fromPlaceLabel.font)

@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import GDPerformanceView_Swift
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, PerformanceMonitorDelegate {
+    func performanceMonitor(didReport performanceReport: PerformanceReport) {
+        if performanceReport.fps != 60 {
+            print(performanceReport.fps)
+        }
+    }
+
     //Можно было бы создать отдельный класс UIview - и в нем описать все элементы
     var myRefreshControl: MyUIRefreshControl = {
         let refreshControl = MyUIRefreshControl()
@@ -48,6 +55,12 @@ class MasterViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        PerformanceMonitor.shared().delegate = self
     }
 
     @objc
