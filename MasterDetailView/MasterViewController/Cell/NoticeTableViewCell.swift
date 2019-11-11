@@ -24,14 +24,35 @@ final class NoticeTableViewCell: BaseTableViewCell {
 
         if let flightLabel = self.flightDateLabel
             , let flightLabelText = flightLabel.text {
-            calculateHeight += flightLabelText.height(withConstrainedWidth: flightLabel.frame.width, font: flightLabel.font)
+            calculateHeight += height(text: flightLabelText, withConstrainedWidth: flightLabel.frame.width, font: flightLabel.font)
         }
 
 
         if let gateLabel = self.gateLabel, let gateLabelText = gateLabel.text {
-            calculateHeight += gateLabelText.height(withConstrainedWidth: gateLabel.frame.width, font: gateLabel.font)
+            calculateHeight += height(text: gateLabelText, withConstrainedWidth: gateLabel.frame.width, font: gateLabel.font)
         }
 
+        return calculateHeight
+    }
+
+    override func calculateHeight() -> CGFloat {
+        if calculatedHeight != nil {
+            return calculatedHeight!
+        }
+
+        var calculateHeight = super.verticalConstraintsHeight
+
+        if let flightLabel = self.flightDateLabel
+            , let flightLabelText = flightLabel.text {
+            calculateHeight += height(text: flightLabelText, withConstrainedWidth: flightLabel.frame.width, font: flightLabel.font)
+        }
+
+
+        if let gateLabel = self.gateLabel, let gateLabelText = gateLabel.text {
+            calculateHeight += height(text: gateLabelText, withConstrainedWidth: gateLabel.frame.width, font: gateLabel.font)
+        }
+
+        self.calculatedHeight = calculateHeight
         return calculateHeight
     }
 }

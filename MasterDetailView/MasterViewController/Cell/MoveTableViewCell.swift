@@ -12,9 +12,11 @@ final class MoveTableViewCell: BaseTableViewCell {
     @IBOutlet private var fromPlaceLabel: UILabel!
     @IBOutlet private var toPlaceLabel: UILabel!
     @IBOutlet private var estimateTimeLabel: UILabel!
+    var model: Move?
 
     override func setup(with model: BaseCellModel) {
         guard let model = model as? Move else { return }
+        self.model = model
         self.fromPlaceLabel.text = "Вылет из: " + (model.fromPlace ?? "_")
         self.toPlaceLabel.text = "Прилет в: " + (model.toPlace ?? "_")
         self.estimateTimeLabel.text = "Время в пути: " + stringFromTimeInterval(interval: model.estimateTime)
@@ -52,14 +54,45 @@ final class MoveTableViewCell: BaseTableViewCell {
         var calculateHeight = super.verticalConstraintsHeight
 
         if let fromPlaceLabel = self.fromPlaceLabel
-            , let fromPlaceLabelText = fromPlaceLabel.text {
-            calculateHeight += fromPlaceLabelText.height(withConstrainedWidth: fromPlaceLabel.frame.width, font: fromPlaceLabel.font)
+            , let fromPlaceLabelText = self.model?.fromPlace,
+            !fromPlaceLabelText.isEmpty {
+            let h = height(text: fromPlaceLabelText, withConstrainedWidth: fromPlaceLabel.frame.width, font: fromPlaceLabel.font)
+            calculateHeight += h
         }
 
         if let toPlaceLabel = self.toPlaceLabel
-            , let toPlaceLabelText = toPlaceLabel.text {
-            calculateHeight += toPlaceLabelText.height(withConstrainedWidth: toPlaceLabel.frame.width, font: toPlaceLabel.font)
+            , let toPlaceLabelText = self.model?.toPlace {
+            let h = height(text: toPlaceLabelText, withConstrainedWidth: toPlaceLabel.frame.width, font: toPlaceLabel.font)
+            calculateHeight += h
         }
+
+        return calculateHeight
+    }
+
+
+    override func calculateHeight() -> CGFloat {
+        if calculatedHeight != nil {
+            return calculatedHeight!
+        }
+
+        var calculateHeight = super.verticalConstraintsHeight
+
+        if let fromPlaceLabel = self.fromPlaceLabel
+            , let fromPlaceLabelText = fromPlaceLabel.text,
+            !fromPlaceLabelText.isEmpty {
+            calculateHeight += height(text: fromPlaceLabelText, withConstrainedWidth: fromPlaceLabel.frame.width, font: fromPlaceLabel.font)
+        } else {
+            calculateHeight += 20
+        }
+
+        if let toPlaceLabel = self.toPlaceLabel
+            , let toPlaceLabelText = toPlaceLabel.text, !toPlaceLabelText.isEmpty {
+            calculateHeight += height(text: toPlaceLabelText, withConstrainedWidth: toPlaceLabel.frame.width, font: toPlaceLabel.font)
+        } else {
+            calculateHeight += 20
+        }
+
+        self.calculatedHeight = calculateHeight
         return calculateHeight
     }
 }

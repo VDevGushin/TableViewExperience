@@ -28,7 +28,7 @@ final class TableManager {
     func loadNewBatch(source: [BaseCellModel],
         on queue: DispatchQueue = .global(qos: .utility),
         completion: @escaping (Bool, [IndexPath]) -> Void) {
-
+  
         queue.async { [weak self] in
             guard let self = self else { return }
             let (newIndexPaths, xibNames) = self.modelManager.load(with: source)

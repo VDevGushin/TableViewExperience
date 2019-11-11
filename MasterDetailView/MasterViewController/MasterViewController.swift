@@ -15,7 +15,6 @@ class MasterViewController: UITableViewController, PerformanceMonitorDelegate {
             print(performanceReport.fps)
         }
     }
-
     //Можно было бы создать отдельный класс UIview - и в нем описать все элементы
     var myRefreshControl: MyUIRefreshControl = {
         let refreshControl = MyUIRefreshControl()

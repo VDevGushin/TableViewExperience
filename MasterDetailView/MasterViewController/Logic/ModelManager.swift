@@ -24,6 +24,7 @@ class ModelManager {
         self.source = []
     }
 
+
     func load(with source: [BaseCellModel]) -> LoadData {
         var indexPaths = [IndexPath]()
         var xibNames = Set<String>()
@@ -34,6 +35,10 @@ class ModelManager {
             indexPaths.append(IndexPath(row: startIndex, section: 0))
             startIndex += 1
         }
+        
+        print(indexPaths.first?.row ?? 0.0)
+        print(indexPaths.last?.row ?? 0.0)
+
         return (indexPaths, xibNames)
     }
 }

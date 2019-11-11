@@ -44,10 +44,11 @@ fileprivate extension String {
     static var place: String? {
         let textLenght = Int.random(in: 10...20)
         var text = ""
-        for _ in 0..<textLenght {
-            text += "Bla"
+        for _ in 0..<10 {
+            text += "привет "
         }
-        return Int.random(in: 0...1) > 0 ? text : nil
+        //return Int.random(in: 0...1) > 0 ? text : nil
+        return text
     }
 }
 
