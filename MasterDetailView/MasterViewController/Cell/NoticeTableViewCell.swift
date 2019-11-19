@@ -8,10 +8,10 @@
 
 import UIKit
 
+
 final class NoticeTableViewCell: BaseTableViewCell {
     @IBOutlet private var flightDateLabel: UILabel!
     @IBOutlet private var gateLabel: UILabel!
-
     override func setup(with model: BaseCellModel) {
         guard let model = model as? Notice else { return }
 

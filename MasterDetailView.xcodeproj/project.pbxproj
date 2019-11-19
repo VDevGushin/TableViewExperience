@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,6 +37,10 @@
 		459F88E9236998DB0042F806 /* CellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459F88E8236998DB0042F806 /* CellManager.swift */; };
 		45D007292372B8E500499BF1 /* TableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D007282372B8E500499BF1 /* TableManager.swift */; };
 		45ED045B2361C983006BC78C /* MasterViewDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED045A2361C983006BC78C /* MasterViewDataController.swift */; };
+		8647B22E2383CE5F009F89FE /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B22C2383CE5F009F89FE /* GenericTableViewController.swift */; };
+		8647B22F2383CE5F009F89FE /* GenericTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8647B22D2383CE5F009F89FE /* GenericTableViewController.xib */; };
+		8647B2322383CE7E009F89FE /* GenericsCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B2312383CE7E009F89FE /* GenericsCellModels.swift */; };
+		8647B2362383D12D009F89FE /* GenericCellsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B2352383D12D009F89FE /* GenericCellsModels.swift */; };
 		C5A28FE6768F0AD0BBB84F68 /* Pods_MasterDetailView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC23634F1380D0C51BF9C66 /* Pods_MasterDetailView.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +78,10 @@
 		45D007282372B8E500499BF1 /* TableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableManager.swift; sourceTree = "<group>"; };
 		45ED045A2361C983006BC78C /* MasterViewDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewDataController.swift; sourceTree = "<group>"; };
 		7AC23634F1380D0C51BF9C66 /* Pods_MasterDetailView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasterDetailView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8647B22C2383CE5F009F89FE /* GenericTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
+		8647B22D2383CE5F009F89FE /* GenericTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenericTableViewController.xib; sourceTree = "<group>"; };
+		8647B2312383CE7E009F89FE /* GenericsCellModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericsCellModels.swift; sourceTree = "<group>"; };
+		8647B2352383D12D009F89FE /* GenericCellsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCellsModels.swift; sourceTree = "<group>"; };
 		86A69D4A444CD69797DD1647 /* Pods-MasterDetailView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterDetailView.release.xcconfig"; path = "Target Support Files/Pods-MasterDetailView/Pods-MasterDetailView.release.xcconfig"; sourceTree = "<group>"; };
 		BC8772067D8F616B3063F9B9 /* Pods-MasterDetailView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterDetailView.debug.xcconfig"; path = "Target Support Files/Pods-MasterDetailView/Pods-MasterDetailView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +141,7 @@
 		4523144C2361BA360075AA35 /* MasterDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				8647B22A2383CE3D009F89FE /* TestTable2 */,
 				4523146D2361BD600075AA35 /* FakeGenerator */,
 				4513B4FF2361E7BC00D4DA5B /* Service */,
 				455D01492361CFB800DEE32D /* Helpers */,
@@ -218,6 +227,33 @@
 			path = Logic;
 			sourceTree = "<group>";
 		};
+		8647B22A2383CE3D009F89FE /* TestTable2 */ = {
+			isa = PBXGroup;
+			children = (
+				8647B2342383CE9B009F89FE /* Cells */,
+				8647B2302383CE6C009F89FE /* Models */,
+				8647B22C2383CE5F009F89FE /* GenericTableViewController.swift */,
+				8647B22D2383CE5F009F89FE /* GenericTableViewController.xib */,
+			);
+			path = TestTable2;
+			sourceTree = "<group>";
+		};
+		8647B2302383CE6C009F89FE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8647B2312383CE7E009F89FE /* GenericsCellModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8647B2342383CE9B009F89FE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8647B2352383D12D009F89FE /* GenericCellsModels.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		B2E920DEE1425A8DE697CDEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +268,6 @@
 				BC8772067D8F616B3063F9B9 /* Pods-MasterDetailView.debug.xcconfig */,
 				86A69D4A444CD69797DD1647 /* Pods-MasterDetailView.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -298,6 +333,7 @@
 			files = (
 				451BC0DC23699F0D00B86E0A /* MoveTableViewCell.xib in Resources */,
 				451BC0D823699F0100B86E0A /* EventTableViewCell.xib in Resources */,
+				8647B22F2383CE5F009F89FE /* GenericTableViewController.xib in Resources */,
 				4523145C2361BA360075AA35 /* LaunchScreen.storyboard in Resources */,
 				451BC0D423699EF000B86E0A /* NoticeTableViewCell.xib in Resources */,
 				452314592361BA360075AA35 /* Assets.xcassets in Resources */,
@@ -354,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8647B22E2383CE5F009F89FE /* GenericTableViewController.swift in Sources */,
 				451BC0DB23699F0D00B86E0A /* MoveTableViewCell.swift in Sources */,
 				452314692361BC4F0075AA35 /* Move.swift in Sources */,
 				452314772361C6430075AA35 /* FakeNetworkLayerOrService.swift in Sources */,
@@ -368,6 +405,7 @@
 				451BC0E02369AC0800B86E0A /* NewCellClass.swift in Sources */,
 				452314742361BF3E0075AA35 /* CellGenerator.swift in Sources */,
 				452314522361BA360075AA35 /* MasterViewController.swift in Sources */,
+				8647B2322383CE7E009F89FE /* GenericsCellModels.swift in Sources */,
 				4513B52023621E8900D4DA5B /* UIStackView+Ex.swift in Sources */,
 				451BC0D323699EF000B86E0A /* NoticeTableViewCell.swift in Sources */,
 				452314672361BC480075AA35 /* Event.swift in Sources */,
@@ -376,6 +414,7 @@
 				459F88E7236996D40042F806 /* ModelManager.swift in Sources */,
 				455D014B2361D02200DEE32D /* TableView+Ex.swift in Sources */,
 				451BC0D723699F0100B86E0A /* EventTableViewCell.swift in Sources */,
+				8647B2362383D12D009F89FE /* GenericCellsModels.swift in Sources */,
 				459F88E9236998DB0042F806 /* CellManager.swift in Sources */,
 				45ED045B2361C983006BC78C /* MasterViewDataController.swift in Sources */,
 			);
