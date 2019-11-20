@@ -9,10 +9,12 @@
 import UIKit
 
 class GenericTableViewController: UITableViewController {
-    var dataSource = [NoticeModel(title: "Test title", subTitle: "Test subTitle"), MoveModel(title: "Test title", subTitle: "Test subTitle")] as [Any]
+    var dataSource = source.make()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+       
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,7 +41,7 @@ class GenericTableViewController: UITableViewController {
 
 
 
-        
+
 
         return cell
     }

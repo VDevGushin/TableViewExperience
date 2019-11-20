@@ -10,39 +10,40 @@ import UIKit
 
 
 // MARK: - Base
-protocol BaseCellModelEmbeded {
-    associatedtype Cell: UITableViewCell
-    func attach(cell: Cell)
-    func detach(cell: Cell)
-}
+protocol BaseModel { }
 
 // MARK: - Notise
-struct NoticeModel: BaseCellModelEmbeded {
-    typealias Cell = NoticeModelCell
+struct NoticeModel: BaseModel {
     let title: String
     let subTitle: String
-
-    func attach(cell: NoticeModelCell) {
-        cell.attach(model: self)
-    }
-
-    func detach(cell: NoticeModelCell) {
-        cell.detach(model: self)
-    }
 }
 
 // MARK: - Move
-
-struct MoveModel: BaseCellModelEmbeded {
-    typealias Cell = MoveModelCell
+struct MoveModel: BaseModel {
     let title: String
     let subTitle: String
+}
 
-    func attach(cell: MoveModelCell) {
-        cell.attach(model: self)
+
+let source: [BaseModel] = [NoticeModel(title: "test1", subTitle: "test2"), MoveModel(title: "test1", subTitle: "test2")]
+
+extension Array where Element == BaseModel {
+    func make() -> [XibCellGenericModel] {
+        var result = [XibCellGenericModel]()
+        for element in self {
+            if let move = element as? MoveModel {
+                result.append(MoveModelCell.ModelForMoveCell(title: move.title, subTitle: move.subTitle))
+            }
+            if let notice = element as? NoticeModel {
+                result.append(NoticeModelCell.ModelForNoticeCell(title: notice.title, subTitle: notice.subTitle))
+            }
+        }
+        return result
     }
+}
 
-    func detach(cell: MoveModelCell) {
-        cell.detach(model: self)
+extension Array where Element: XibCellGenericModel {
+    var xibNames: [String] {
+        return self.map { $0.xibName }
     }
 }
